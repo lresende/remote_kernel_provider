@@ -21,7 +21,7 @@ install:
   - pip freeze
 
 script:
-  - make test
+  - sonar-scanner
 
 after_success:
   - echo "Travis exited with ${TRAVIS_TEST_RESULT}"
@@ -35,3 +35,13 @@ after_failure:
   - python --version
   - pip --version
   - pip list
+
+
+addons:
+  sonarcloud:
+    organization: "gateway-experiments"
+    token:  
+      secure: OszHeKyVxXgakvg+Wz8qtfo5gqzXLltdVgswKP5qC2MBSRzYvMVNDcCfuBMCtPlXivfc2t1ArqAFL7KPnVPLHPWuVgoLSjMC5EIqXpPl8duGk1f+3ybK736se45VDL/zU/JnuuU2melW9XM4CABMglkz1PRHOXgziIu/Rc43xgPpGGTGDOlsz24fEFSrv8kt4aomQRaY/hJ5fBmLdJ4g6RNu1OSmnvr8h0CKtNL65MV2yFE/ezQLvi9qqBQhY6nO68S11O1EmxDVLMp/s80zSWJURjw4WtlUj9OwZnB1T83M8IrWxrb4xyqurHB2dGqofPFb8LjiRXyoi0CsjW0Id0i0VwmHo0jdqCMGDscuBogSyQx/sHK9ct9fJAgJVSsumb2dPTn0N9d4YzPCaUXaLd+talvITH9s6M8refspIySTFOO6T8aePfOcUWqrjgWh/gGPG77aOF4+47CbVBHwWNJWR2AY5c5oy7wbPmVQLBi8YBJvLbPxlkxP7Q+JdxFX0hsI7GoNwOq7WLZcqS4aoRuACfd8C6IFq9Zp9L86m6Gq2SwaeVuAUvdDPhdxtx84bKKaJLUt57LzP5WYkbDUjdZoS5mdxk9L8Lx20LqckDoGG6K7Co/2csijMix0LkCcHOSzxiOrBkIoqKKPhdXC322jKYgMlM+jgJet6A+kg4g=
+
+script:
+  - sonar-scanner -X
